@@ -1,0 +1,34 @@
+spring:
+    application:
+        name: testlazy
+    profiles:
+        active: #spring.profiles.active#
+    devtools:
+            restart:
+                enabled: true
+            livereload:
+                enabled: false # we use gulp + BrowserSync for livereload
+    datasource:
+        type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        url: jdbc:mysql://localhost:3306/testlazydatabase?useUnicode=true&characterEncoding=utf8&useSSL=false&createDatabaseIfNotExist=true
+        name:
+        username: root
+        password:
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: true
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: false
+        open-in-view: true
+        hibernate:
+            ddl-auto: update
+            naming:
+                strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+security:
+    basic:
+        enabled: false
+server:
+    port: 8095

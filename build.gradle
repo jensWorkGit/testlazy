@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'demo'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.1'
+}
+
+dependencies {
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	compile "org.springframework.boot:spring-boot-starter-web"
+	compile "javax.inject:javax.inject:1"
+	compile "org.springframework.boot:spring-boot-devtools"
+	compile "org.hibernate:hibernate-ehcache:4.3.11.Final"
+	compile "mysql:mysql-connector-java"
+	compile "com.fasterxml.jackson.core:jackson-core:${jackson_version}"
+	compile "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
+	compile "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
+	compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate5"
+}
